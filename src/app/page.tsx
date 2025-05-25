@@ -13,14 +13,18 @@ export default function Home() {
   const { language, setLanguage } = useLanguage();
   const [prediction, setPrediction] = useState<PredictionResponse | null>(null);
   const [fadeIn, setFadeIn] = useState(false);
+  const [formVisible, setFormVisible] = useState(false);
 
   useEffect(() => {
     setFadeIn(true);
   }, []);
 
+  const toggleForm = () => {
+    setFormVisible((v) => !v);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 flex flex-col items-center px-6 py-12 space-y-16">
-
       {/* Hero Section */}
       <section
         className={`max-w-7xl w-full flex flex-col md:flex-row items-center justify-between gap-12 transition-opacity duration-1000 ${
@@ -39,6 +43,22 @@ export default function Home() {
               ? "បញ្ចូលរោគសញ្ញារបស់អ្នកដើម្បីទទួលបានការព្យាករណ៍ជំងឺ"
               : "Enter your symptoms to get disease prediction powered by AI."}
           </p>
+
+          {/* Toggle Button */}
+          <button
+            onClick={toggleForm}
+            className="mt-8 px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition-colors duration-300"
+            aria-expanded={formVisible}
+            aria-controls="symptom-form"
+          >
+            {formVisible
+              ? language === "khmer"
+                ? "បិទបែបបទ"
+                : "Close Form"
+              : language === "khmer"
+              ? "ចាប់ផ្តើមព្យាករណ៍"
+              : "Start Prediction"}
+          </button>
         </div>
 
         {/* Right Image */}
@@ -66,11 +86,12 @@ export default function Home() {
         </svg>
       </div>
 
-      {/* Form Section */}
+      {/* Collapsible Form Section */}
       <section
-        className={`w-full max-w-3xl bg-white p-10 rounded-2xl shadow-lg transition-transform duration-700 ease-out ${
-          fadeIn ? "translate-y-0 opacity-100" : "translate-y-10 opacity-0"
-        }`}
+        id="symptom-form"
+        className={`w-full max-w-3xl bg-white p-10 rounded-2xl shadow-lg transform origin-top transition-all duration-700 ease-in-out
+          ${formVisible ? "opacity-100 max-h-[1000px] mt-0" : "opacity-0 max-h-0 mt-0 overflow-hidden"}`}
+        style={{ overflow: "hidden" }}
       >
         <SymptomForm
           onPredict={setPrediction}

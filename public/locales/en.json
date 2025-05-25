@@ -1,0 +1,11 @@
+{
+    "diseases": {
+      "flu": "Flu",
+      "cold": "Common Cold",
+      "covid": "COVID-19",
+      "diabetes": "Diabetes",
+      "hypertension": "Hypertension",
+      "asthma": "Asthma"
+    }
+  }
+  

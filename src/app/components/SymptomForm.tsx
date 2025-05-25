@@ -1,22 +1,32 @@
-'use client';
+"use client";
 
-import React, { useState, useEffect } from 'react';
-import { fetchValidInputs, predictDisease } from '../utils/utility';
-import { ValidInputsResponse, PredictionResponse, SymptomInput } from '../types/api';
-import { translationMap } from '../types/translation';
-import { AxiosError } from 'axios';
+import React, { useState, useEffect } from "react";
+import { fetchValidInputs, predictDisease } from "../utils/utility";
+import {
+  ValidInputsResponse,
+  PredictionResponse,
+  SymptomInput,
+} from "../types/api";
+import { translationMap } from "../types/translation";
+import { AxiosError } from "axios";
 
 interface SymptomFormProps {
   onPredict: (result: PredictionResponse) => void;
-  language: 'khmer' | 'english';
-  setLanguage: React.Dispatch<React.SetStateAction<'khmer' | 'english'>>;
+  language: "khmer" | "english";
+  setLanguage: React.Dispatch<React.SetStateAction<"khmer" | "english">>;
 }
 
-const SymptomForm: React.FC<SymptomFormProps> = ({ onPredict, language, setLanguage }) => {
-  const [validInputs, setValidInputs] = useState<ValidInputsResponse['valid_inputs']>({});
+const SymptomForm: React.FC<SymptomFormProps> = ({
+  onPredict,
+  language,
+  setLanguage,
+}) => {
+  const [validInputs, setValidInputs] = useState<
+    ValidInputsResponse["valid_inputs"]
+  >({});
   const [formData, setFormData] = useState<SymptomInput>({});
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,15 +37,18 @@ const SymptomForm: React.FC<SymptomFormProps> = ({ onPredict, language, setLangu
         Object.keys(data.valid_inputs).forEach((key) => {
           initialData[key] = Array.isArray(data.valid_inputs[key])
             ? data.valid_inputs[key][0]
-            : (data.valid_inputs[key] as { type: string; example: number }).example;
-          if (key === 'Age') initialData[key] = 30;
+            : (data.valid_inputs[key] as { type: string; example: number })
+                .example;
+          if (key === "Age") initialData[key] = 30;
         });
         setFormData(initialData);
       } catch (err) {
         const axiosError = err as AxiosError<{ error?: string }>;
         const errorMessage =
           axiosError.response?.data?.error ||
-          (language === 'khmer' ? 'មិនអាចទាញទិន្នន័យបានទេ។' : 'Failed to fetch data.');
+          (language === "khmer"
+            ? "មិនអាចទាញទិន្នន័យបានទេ។"
+            : "Failed to fetch data.");
         setError(errorMessage);
       }
     };
@@ -45,25 +58,30 @@ const SymptomForm: React.FC<SymptomFormProps> = ({ onPredict, language, setLangu
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-    setError('');
+    setError("");
     try {
       const result = await predictDisease(formData, language);
+      console.log("Prediction result:", result);
       onPredict(result);
     } catch (err) {
       const axiosError = err as AxiosError<{ error?: string }>;
       const errorMessage =
         axiosError.response?.data?.error ||
-        (language === 'khmer' ? 'កំហុសក្នុងការព្យាករណ៍។' : 'Prediction failed.');
+        (language === "khmer"
+          ? "កំហុសក្នុងការព្យាករណ៍។"
+          : "Prediction failed.");
       setError(errorMessage);
     }
     setLoading(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({
       ...prev,
-      [name]: name === 'Age' ? parseInt(value) : value,
+      [name]: name === "Age" ? parseInt(value) : value,
     }));
   };
 
@@ -71,11 +89,11 @@ const SymptomForm: React.FC<SymptomFormProps> = ({ onPredict, language, setLangu
     <div className="max-w-2xl mx-auto p-6 bg-white rounded-lg shadow-md">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-2xl font-bold">
-          {language === 'khmer' ? 'ការព្យាករណ៍ជំងឺ' : 'Disease Prediction'}
+          {language === "khmer" ? "ការព្យាករណ៍ជំងឺ" : "Disease Prediction"}
         </h2>
         <select
           value={language}
-          onChange={(e) => setLanguage(e.target.value as 'khmer' | 'english')}
+          onChange={(e) => setLanguage(e.target.value as "khmer" | "english")}
           className="border rounded p-2"
         >
           <option value="khmer">ភាសាខ្មែរ</option>
@@ -87,13 +105,15 @@ const SymptomForm: React.FC<SymptomFormProps> = ({ onPredict, language, setLangu
         {Object.keys(validInputs).map((key) => (
           <div key={key} className="mb-4">
             <label className="block text-gray-700 font-medium mb-2">
-              {language === 'khmer' ? translationMap.labels[key]?.khmer || key : key}
+              {language === "khmer"
+                ? translationMap.labels[key]?.khmer || key
+                : key}
             </label>
-            {key === 'Age' ? (
+            {key === "Age" ? (
               <input
                 type="number"
                 name={key}
-                value={(formData[key] as number) || 30}
+                value={(formData[key] as number) ?? 25}
                 onChange={handleChange}
                 className="w-full border rounded p-2"
                 min="1"
@@ -103,19 +123,20 @@ const SymptomForm: React.FC<SymptomFormProps> = ({ onPredict, language, setLangu
             ) : (
               <select
                 name={key}
-                value={(formData[key] as string) || ''}
+                value={(formData[key] as string) || ""}
                 onChange={handleChange}
                 className="w-full border rounded p-2"
                 required
               >
                 <option value="">
-                  {language === 'khmer' ? 'ជ្រើសរើស' : 'Select'}
+                  {language === "khmer" ? "ជ្រើសរើស" : "Select"}
                 </option>
-                {(validInputs[key] as string[])?.map((option) => (
-                  <option key={option} value={option}>
-                    {option}
-                  </option>
-                ))}
+                {Array.isArray(validInputs[key]) &&
+                  (validInputs[key] as string[]).map((option) => (
+                    <option key={option} value={option}>
+                      {option}
+                    </option>
+                  ))}
               </select>
             )}
           </div>
@@ -126,12 +147,12 @@ const SymptomForm: React.FC<SymptomFormProps> = ({ onPredict, language, setLangu
           className="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700 disabled:bg-gray-400"
         >
           {loading
-            ? language === 'khmer'
-              ? 'កំពុងព្យាករណ៍...'
-              : 'Predicting...'
-            : language === 'khmer'
-            ? 'ព្យាករណ៍'
-            : 'Predict'}
+            ? language === "khmer"
+              ? "កំពុងព្យាករណ៍..."
+              : "Predicting..."
+            : language === "khmer"
+            ? "ព្យាករណ៍"
+            : "Predict"}
         </button>
       </form>
     </div>

@@ -19,7 +19,7 @@ export const predictDisease = async (
 ): Promise<PredictionResponse> => {
   try {
     const response = await axios.post<PredictionResponse>(
-      `${API_URL}/predict?language=${language}`,
+      `${API_URL}/disease/predict?language=${language}`,
       symptoms
     );
     return response.data;
