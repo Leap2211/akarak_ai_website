@@ -1,7 +1,7 @@
 import axios, { AxiosError } from 'axios';
 import { ValidInputsResponse, PredictionResponse, SymptomInput } from '../types/api';
 
-const API_URL = 'http://127.0.0.1:8000'; // Replace with deployed URL
+const API_URL = 'http://127.0.0.1:8000'; 
 
 export const fetchValidInputs = async (language: 'khmer' | 'english'): Promise<ValidInputsResponse> => {
   try {

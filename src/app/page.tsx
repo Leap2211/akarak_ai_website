@@ -33,12 +33,12 @@ export default function Home() {
       >
         {/* Left Text */}
         <div className="md:w-1/2 text-center md:text-left">
-          <h1 className="text-5xl font-extrabold text-indigo-900 mb-4 drop-shadow-lg leading-tight">
+          <h1 className="text-5xl font-extrabold text-purple-900 mb-4 drop-shadow-lg leading-tight">
             {language === "khmer"
               ? "ស្វាគមន៍មកកាន់កម្មវិធីព្យាករណ៍ជំងឺ"
               : "Welcome to AI Health Prediction"}
           </h1>
-          <p className="text-indigo-700 text-lg max-w-md mx-auto md:mx-0 leading-relaxed">
+          <p className="text-purple-700 text-lg max-w-md mx-auto md:mx-0 leading-relaxed">
             {language === "khmer"
               ? "បញ្ចូលរោគសញ្ញារបស់អ្នកដើម្បីទទួលបានការព្យាករណ៍ជំងឺ"
               : "Enter your symptoms to get disease prediction powered by AI."}
@@ -47,7 +47,7 @@ export default function Home() {
           {/* Toggle Button */}
           <button
             onClick={toggleForm}
-            className="mt-8 px-6 py-3 bg-indigo-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition-colors duration-300"
+            className="mt-8 px-6 py-3 bg-purple-600 text-white rounded-lg shadow-md hover:bg-indigo-700 transition-colors duration-300"
             aria-expanded={formVisible}
             aria-controls="symptom-form"
           >

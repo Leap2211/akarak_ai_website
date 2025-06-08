@@ -54,7 +54,7 @@ export const translationMap: TranslationMap = {
     cough: { english: "Cough", khmer: "ក្អក" },
     fatigue: { english: "Fatigue", khmer: "អស់កម្លាំង" },
     difficulty_breathing: { english: "Difficulty Breathing", khmer: "ពិបាកដកដង្ហើម" },
-    cold: { english: "Cold", khmer: "រលាកក្រពះ" },
+    cold: { english: "Cold", khmer: "ផ្តាស់សាយធំ" },
     age: { english: "Age", khmer: "អាយុ" },
     covid: { english: "Covid 19", khmer: "ជំងឺកូវីដ 19"},
     flu: { english: "Flu", khmer: "ជំងឺផ្តាសាយ" },

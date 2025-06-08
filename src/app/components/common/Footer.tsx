@@ -8,7 +8,7 @@ const Footer: React.FC = () => {
   const { language } = useLanguage();
 
   return (
-    <footer className="bg-blue-800 text-white p-6">
+    <footer className="bg-purple-800 text-white p-6">
       <div className="max-w-7xl mx-auto text-center">
         <div className="mb-4">
           <Link href="/about" className="mx-2 hover:underline">
@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Facebook"
-            className="hover:text-blue-400 transition-colors"
+            className="hover:text-purple-400 transition-colors"
           >
             <FaFacebookF size={24} />
           </a>
@@ -35,7 +35,7 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Twitter"
-            className="hover:text-blue-400 transition-colors"
+            className="hover:text-purple-400 transition-colors"
           >
             <FaTelegram size={24} />
           </a>
@@ -44,7 +44,7 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="Instagram"
-            className="hover:text-blue-400 transition-colors"
+            className="hover:text-purple-400 transition-colors"
           >
             <FaInstagram size={24} />
           </a>
@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="hover:text-blue-400 transition-colors"
+            className="hover:text-purple-400 transition-colors"
           >
             <FaLinkedinIn size={24} />
           </a>
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn"
-            className="hover:text-blue-400 transition-colors"
+            className="hover:text-purple-400 transition-colors"
           >
             <FaGithub size={24} />
           </a>

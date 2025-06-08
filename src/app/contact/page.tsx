@@ -24,9 +24,9 @@ export default function ContactPage() {
           initial={{ opacity: 0, x: -40 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
-          className="flex items-center justify-center h-64 md:h-auto w-full hidden md:flex bg-blue-100"
+          className="flex items-center justify-center h-64 md:h-auto w-full hidden md:flex bg-purple-100"
         >
-          <Inbox className="text-blue-600 w-44 h-44 animate-bounce" />
+          <Inbox className="text-purple-600 w-44 h-44 animate-bounce" />
         </motion.div>
 
         {/* Form and Contact Info Section */}
@@ -37,8 +37,8 @@ export default function ContactPage() {
           className="p-8 md:p-14 flex flex-col justify-center space-y-8"
         >
           <div className="flex items-center space-x-3 justify-center md:justify-start">
-            <Inbox className="text-blue-600 w-9 h-9" />
-            <h1 className="text-3xl md:text-4xl font-extrabold text-blue-800">
+            <Inbox className="text-purple-600 w-9 h-9" />
+            <h1 className="text-3xl md:text-4xl font-extrabold text-purple-800">
               {language === 'khmer' ? 'ទំនាក់ទំនង' : 'Contact'}
             </h1>
           </div>
@@ -54,7 +54,7 @@ export default function ContactPage() {
 
             <button
               type="submit"
-              className="flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-xl w-full transition shadow-md"
+              className="flex items-center justify-center gap-2 bg-purple-600 hover:bg-purple-700 text-white font-semibold py-3 rounded-xl w-full transition shadow-md"
             >
               <SendHorizonal className="w-5 h-5" />
               {language === 'khmer' ? 'ផ្ញើសារ' : 'Send Message'}
@@ -63,18 +63,18 @@ export default function ContactPage() {
 
           {/* Contact Info */}
           <div className="border-t border-gray-200 pt-6 space-y-4">
-            <h2 className="text-xl font-semibold text-blue-800">{language === 'khmer' ? 'ព័ត៌មានទំនាក់ទំនង' : 'Contact Info'}</h2>
+            <h2 className="text-xl font-semibold text-purple-800">{language === 'khmer' ? 'ព័ត៌មានទំនាក់ទំនង' : 'Contact Info'}</h2>
 
             <div className="flex items-center space-x-4 text-gray-700">
-              <Phone className="w-6 h-6 text-blue-500" />
-              <a href="tel:+1234567890" className="hover:text-blue-600 transition">
+              <Phone className="w-6 h-6 text-purple-500" />
+              <a href="tel:+1234567890" className="hover:text-purple-600 transition">
                 +1 (234) 567-890
               </a>
             </div>
 
             <div className="flex items-center space-x-4 text-gray-700">
-              <Mail className="w-6 h-6 text-blue-500" />
-              <a href="mailto:contact@aihealth.com" className="hover:text-blue-600 transition">
+              <Mail className="w-6 h-6 text-purple-500" />
+              <a href="mailto:contact@aihealth.com" className="hover:text-purple-600 transition">
                 contact@aihealth.com
               </a>
             </div>
@@ -86,7 +86,7 @@ export default function ContactPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Facebook"
-                className="text-blue-600 hover:text-blue-800 transition"
+                className="text-purple-600 hover:text-purple-800 transition"
               >
                 <Facebook className="w-7 h-7" />
               </a>
@@ -95,7 +95,7 @@ export default function ContactPage() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Twitter"
-                className="text-blue-400 hover:text-blue-600 transition"
+                className="text-purple-400 hover:text-purple-600 transition"
               >
                 <Twitter className="w-7 h-7" />
               </a>

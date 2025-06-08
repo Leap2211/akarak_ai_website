@@ -112,7 +112,7 @@ const SymptomForm: React.FC<SymptomFormProps> = ({ onPredict, language }) => {
         <button
           type="submit"
           disabled={loading}
-          className="w-full bg-blue-600 text-white p-3 rounded hover:bg-blue-700 disabled:bg-gray-400"
+          className="w-full bg-purple-600 text-white p-3 rounded hover:bg-purple-700 disabled:bg-gray-400"
         >
           {loading
             ? language === 'khmer'
